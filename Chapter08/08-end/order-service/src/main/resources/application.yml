@@ -25,6 +25,8 @@ spring:
   config:
     import: "optional:configserver:"
   cloud:
+    refresh:
+      enabled: false
     config:
       uri: http://localhost:8888
       request-connect-timeout: 5000 # 5s
@@ -38,3 +40,4 @@ spring:
 
 polar:
   catalog-service-uri: "http://localhost:9001"
+

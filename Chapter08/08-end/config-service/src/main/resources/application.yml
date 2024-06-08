@@ -14,6 +14,8 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 15s
   cloud:
+    refresh:
+      enabled: false
     config:
       server:
         git:

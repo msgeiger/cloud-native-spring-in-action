@@ -16,6 +16,8 @@ spring:
   config:
     import: "optional:configserver:"
   cloud:
+    refresh:
+      enabled: false
     config:
       uri: http://localhost:8888
       request-connect-timeout: 5000 # 5s
@@ -42,3 +44,4 @@ management:
 
 polar:
   greeting: Welcome to the local book catalog!
+

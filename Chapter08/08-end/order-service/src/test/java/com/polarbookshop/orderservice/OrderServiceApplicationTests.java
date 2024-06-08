@@ -6,6 +6,7 @@ import com.polarbookshop.orderservice.order.domain.Order;
 import com.polarbookshop.orderservice.order.domain.OrderStatus;
 import com.polarbookshop.orderservice.order.web.OrderRequest;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.aot.DisabledInAotMode;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
