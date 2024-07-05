@@ -37,7 +37,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.retry:spring-retry'
-    implementation 'org.flywaydb:flyway-core:10.13.0'
 
     runtimeOnly 'org.flywaydb:flyway-database-postgresql:10.13.0'
 	runtimeOnly 'org.postgresql:postgresql'
@@ -67,7 +66,7 @@ dependencyManagement {
 bootBuildImage {
 	builder = "docker.io/paketobuildpacks/builder-jammy-base"
 	imageName = "${project.name}"
-	environment = ["BP_JVM_VERSION": "17"]
+	environment = ["BP_JVM_VERSION": "21"]
 
 	docker {
 		publishRegistry {
