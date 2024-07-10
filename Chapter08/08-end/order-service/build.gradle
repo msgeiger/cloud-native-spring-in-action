@@ -50,7 +50,10 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
-	testImplementation 'com.squareup.okhttp3:mockwebserver'
+    testImplementation 'com.squareup.okhttp3:okhttp-testing-support:3.14.9'
+    testImplementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.14'
+	testImplementation 'com.squareup.okhttp3:mockwebserver:5.0.0-alpha.14'
+    testRuntimeOnly 'com.squareup.okhttp3:mockwebserver3-junit5:5.0.0-alpha.14'
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:postgresql'
 	testImplementation 'org.testcontainers:r2dbc'
@@ -60,6 +63,7 @@ dependencyManagement {
 	imports {
 		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.14"
 	}
 }
 

@@ -44,6 +44,7 @@ public record Book (
 
 ){
 
+    // http POST :9001/books isbn=1234567892 title="The Hobit" author="John Ronald Reuel Tolkien" price=40.00 publisher="Allen & Unwin and Collins
         public static Book of(String isbn, String title, String author, Double price, String publisher) {
                 return new Book(null, isbn, title, author, price, publisher, null, null, 0);
         }
