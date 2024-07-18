@@ -1,12 +1,18 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.18'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-	id 'java'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'org.graalvm.buildtools.native' version '0.10.2'
+    id 'org.flywaydb.flyway' version '10.13.0'
 }
 
 group = 'com.polarbookshop'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 description = 'Provides functionality for managing the books in the catalog.'
 
@@ -21,8 +27,8 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "2021.0.9")
-	set('testcontainersVersion', "1.19.8")
+    set('springCloudVersion', "2023.0.2")
+    set('testcontainersVersion', "1.19.8")
 }
 
 dependencies {
@@ -32,7 +38,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.retry:spring-retry'
-	implementation 'org.flywaydb:flyway-core'
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-database-postgresql")
 
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
@@ -56,7 +63,7 @@ bootRun {
 bootBuildImage {
 	builder = "docker.io/paketobuildpacks/builder-jammy-base"
 	imageName = "${project.name}"
-	environment = ["BP_JVM_VERSION": "17"]
+	environment = ["BP_JVM_VERSION": "21"]
 
 	docker {
 		publishRegistry {

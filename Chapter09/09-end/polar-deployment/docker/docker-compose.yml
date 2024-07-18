@@ -20,7 +20,7 @@ services:
       - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - SPRING_DATASOURCE_URL=jdbc:postgresql://polar-postgres:5432/polardb_catalog
       - SPRING_PROFILES_ACTIVE=testdata
-  
+
   order-service:
     depends_on:
       - polar-postgres
@@ -37,7 +37,7 @@ services:
       - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - SPRING_R2DBC_URL=r2dbc:postgresql://polar-postgres:5432/polardb_order
       - SPRING_FLYWAY_URL=jdbc:postgresql://polar-postgres:5432/polardb_order
-  
+
   edge-service:
     depends_on:
       - polar-redis
@@ -54,7 +54,7 @@ services:
       - ORDER_SERVICE_URL=http://order-service:9002
       - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - SPRING_REDIS_HOST=polar-redis
-  
+
   config-service:
     image: "config-service"
     container_name: "config-service"
@@ -71,7 +71,7 @@ services:
   # Backing Services
 
   polar-postgres:
-    image: "postgres:14.12"
+    image: "postgres:16"
     container_name: "polar-postgres"
     ports:
       - 5432:5432
@@ -82,7 +82,7 @@ services:
       - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   polar-redis:
-    image: "redis:7.2"
+    image: "redis:7.2.5"
     container_name: "polar-redis"
     ports:
       - 6379:6379
