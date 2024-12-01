@@ -20,6 +20,7 @@ public class BookClient {
 	}
 
 	public Mono<Book> getBookByIsbn(String isbn) {
+
 		return webClient
 				.get()
 				.uri(BOOKS_ROOT_API + isbn)

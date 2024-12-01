@@ -55,6 +55,14 @@ spring:
           uri: ${SPA_URL:http://localhost:9004}
           predicates:
             - Path=/,/*.css,/*.js,/favicon.ico
+        - id: vitalsigns-route
+          uri: ${VITALSIGNS_SERVICE_URL:http://localhost:9005}/vitalsigns
+          predicates:
+            - Path=/vitalsigns/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: vitalsignsCircuitBreaker
         - id: catalog-route
           uri: ${CATALOG_SERVICE_URL:http://localhost:9001}/books
           predicates:
@@ -75,24 +83,25 @@ spring:
   redis:
     connect-timeout: 2s
     host: localhost
+    ssl: false
     port: 6379
     timeout: 1s
   session:
     store-type: redis
     timeout: 10m
     redis:
-      namespace: polar:edge
+      namespace: simplyadd:edge
   security:
     oauth2:
       client:
         registration:
           keycloak:
             client-id: edge-service
-            client-secret: polar-keycloak-secret
+            client-secret: simplyadd-keycloak-secret
             scope: openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/PolarBookshop
+            issuer-uri: http://localhost:8080/realms/SimplyAdd
 
 resilience4j:
   circuitbreaker:

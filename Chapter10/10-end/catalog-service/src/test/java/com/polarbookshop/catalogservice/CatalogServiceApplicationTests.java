@@ -2,6 +2,8 @@ package com.polarbookshop.catalogservice;
 
 import com.polarbookshop.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -13,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("integration")
 class CatalogServiceApplicationTests {
 
+    private static final Logger log = LoggerFactory.getLogger(CatalogServiceApplicationTests.class);
     @Autowired
     private WebTestClient webTestClient;
 
@@ -108,5 +111,7 @@ class CatalogServiceApplicationTests {
             .expectBody(String.class).value(errorMessage ->
                 assertThat(errorMessage).isEqualTo("The book with ISBN " + bookIsbn + " was not found.")
             );
+
+        log.info("Using " + System.getProperty("java.version") + " how fascinating!!!");
     }
 }

@@ -5,6 +5,8 @@ import com.polarbookshop.catalogservice.domain.BookService;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -13,7 +15,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(BookController.class)
+@WebFluxTest(BookService.class)
 class BookControllerMvcTests {
 
     @Autowired
@@ -27,8 +29,8 @@ class BookControllerMvcTests {
         String isbn = "73737313940";
         given(bookService.viewBookDetails(isbn)).willThrow(BookNotFoundException.class);
         mockMvc
-                .perform(get("/books/" + isbn))
-                .andExpect(status().isNotFound());
+            .perform(get("/books/" + isbn))
+            .andExpect(status().isNotFound());
     }
 
 }

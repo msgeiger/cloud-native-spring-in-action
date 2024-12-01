@@ -20,6 +20,8 @@ public class UserController {
 				oidcUser.getFamilyName(),
 				List.of("employee", "customer")
 		);
+        System.out.println(user);
+        System.out.println(oidcUser);
 		return Mono.just(user);
 	}
 

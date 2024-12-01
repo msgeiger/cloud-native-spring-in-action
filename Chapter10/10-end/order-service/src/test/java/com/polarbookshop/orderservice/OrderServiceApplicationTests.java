@@ -126,5 +126,4 @@ class OrderServiceApplicationTests {
 		assertThat(createdOrder.quantity()).isEqualTo(orderRequest.quantity());
 		assertThat(createdOrder.status()).isEqualTo(OrderStatus.REJECTED);
 	}
-
 }
