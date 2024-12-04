@@ -1,0 +1,16 @@
+ 1231  http POST :9002/orders
+ 1232  kubectl get pods
+ 1233  kubectl logs order-service-7f89fd9d7c-z9lm5
+ 1234  http http POST :9002/orders
+ 1235  http GET :9002/orders
+ 1236  http GET :9001/books
+ 1237  http POST :9001/books {"isbn":"", title:"The Hobbit", "author":"J.R.R. Tolkien", "price":"35.95", "publisher":"Example"}
+ 1238  http POST :9001/books {"isbn":"1234567892", title:"The Hobbit", "author":"J.R.R. Tolkien", "price":"35.95", "publisher":"Example"}
+ 1239  http POST :9001/books {"isbn":"1234567892", title:"The Hobbit", "author":"J.R.R. Tolkien", "price":35.95, "publisher":"Example"}
+ 1240  http POST :9001/books {"isbn": "1234567892", title: "The Hobbit", "author": "J.R.R. Tolkien", "price": 35.95, "publisher": "Example"}
+ 1241  http POST :9001/book {"isbn": "1234567892", title: "The Hobbit", "author": "J.R.R. Tolkien", "price": 35.95, "publisher": "Example"}
+ 1242  http GET :9001/books
+ 1243  http POST :9002/orders isbn=1234567890 quantity=3
+ 1244  http POST :9001/books
+ 1245  http POST :9001
+ 1246  http GET :9001/books

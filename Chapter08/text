@@ -1,0 +1,16 @@
+ 1103  docker ps
+ 1104  kubectl get all -l app=order-service
+ 1105  tilt down
+ 1106  ls
+ 1107  cd ../
+ 1108  ls
+ 1109  tilt down
+ 1110  ls
+ 1111  vi Tiltfile
+ 1112  kubectl config get-contexts
+ 1113  minikube stop --profile polar
+ 1114  ls
+ 1115  cd ../
+ 1116  ls
+ 1117  cd ../
+ 1118  ls
