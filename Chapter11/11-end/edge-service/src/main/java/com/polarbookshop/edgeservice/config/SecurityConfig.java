@@ -50,7 +50,7 @@ public class SecurityConfig {
             .authorizeExchange(exchange -> exchange
                 .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers("/", "/*.css", "/*.js", "/favicon.ico").permitAll()
-                .pathMatchers(HttpMethod.GET, "/vitalsigns/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "/vitalsigns/**").authenticated()
                 .anyExchange().authenticated()
             )
             .exceptionHandling(exceptionHandling -> exceptionHandling
