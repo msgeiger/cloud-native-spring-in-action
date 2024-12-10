@@ -57,8 +57,11 @@ public class SecurityConfig {
                 .authenticationEntryPoint(new HttpStatusServerEntryPoint(HttpStatus.UNAUTHORIZED)))
             .oauth2Login(Customizer.withDefaults())
             .logout(logout -> logout.logoutSuccessHandler(oidcLogoutSuccessHandler(clientRegistrationRepository)))
-            .csrf(csrf -> csrf.csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse()))
-            .csrf(csrf -> csrf.csrfTokenRequestHandler(new ServerCsrfTokenRequestAttributeHandler()))
+            .csrf(csrf -> {
+                csrf.csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse());
+                csrf.csrfTokenRequestHandler(new ServerCsrfTokenRequestAttributeHandler());
+            })
+            // .csrf(csrf -> csrf.csrfTokenRequestHandler(new ServerCsrfTokenRequestAttributeHandler()))
             .build();
     }
 
